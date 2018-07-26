@@ -10,11 +10,13 @@ config :chat, Chat.Endpoint,
   http: [port: System.get_env("PORT") || 4000],
   debug_errors: true,
   cache_static_lookup: false,
+  check_origin: false,
   code_reloader: true,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
 
 # Watch static and templates for browser reloading.
 config :chat, Chat.Endpoint,
+  check_origin: false,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
@@ -22,6 +24,7 @@ config :chat, Chat.Endpoint,
       ~r{web/templates/.*(eex)$}
     ]
   ]
+  
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
